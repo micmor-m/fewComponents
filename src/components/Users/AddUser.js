@@ -2,7 +2,7 @@ import React from "react";
 
 const AddUsers = (props) => {
   function addUserHandler(event) {
-    event.prevent.default();
+    event.preventDefault();
   }
 
   return (
