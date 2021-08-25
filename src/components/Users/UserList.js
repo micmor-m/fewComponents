@@ -2,18 +2,22 @@ import React from "react";
 import Card from "../UI/Card";
 import "./UserList.css";
 
-const UserList = ({ userList }) => {
+const UserList = ({ usersList }) => {
 	return (
-		<Card className="input">
-			<ul>
-				{userList.map((user) => {
-					return (
-						<li>
-							{user.name} ({user.age} years old.)
-						</li>
-					);
-				})}
-			</ul>
+		<Card className="users">
+			{!usersList ? (
+				<p>No users loaded</p>
+			) : (
+				<ul>
+					{usersList.map((user, index) => {
+						return (
+							<li key={index}>
+								{user.name} ({user.age} years old.)
+							</li>
+						);
+					})}
+				</ul>
+			)}
 		</Card>
 	);
 };
