@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import "./AddUser.css";
 
 const AddUsers = (props) => {
+	const [enterdUsername, setEnteredUserName] = useState("");
+	const [enterdAge, setEnteredAge] = useState("");
+
 	function addUserHandler(event) {
 		event.preventDefault();
+		if (
+			enterdUsername.trim().length === 0 ||
+			enterdAge.trim().length === 0
+		) {
+			return;
+		}
+		if (+enterdAge < 1) {
+			return;
+		}
+		console.log(enterdUsername, enterdAge);
+		setEnteredUserName("");
+		setEnteredAge("");
 	}
+
+	const usernameChangeHandler = (event) => {
+		setEnteredUserName(event.target.value);
+	};
+
+	const ageChangeHandler = (event) => {
+		setEnteredAge(event.target.value);
+	};
 
 	return (
 		<Card className="input">
@@ -16,9 +39,17 @@ const AddUsers = (props) => {
 					type="text"
 					id="username"
 					placeholder="Enter your name"
+					onChange={usernameChangeHandler}
+					value={enterdUsername}
 				/>
 				<label htmlFor="age">Age</label>
-				<input type="number" id="age" placeholder="Enter your age" />
+				<input
+					type="number"
+					id="age"
+					placeholder="Enter your age"
+					onChange={ageChangeHandler}
+					value={enterdAge}
+				/>
 				<Button type="submit">Add User</Button>
 			</form>
 		</Card>
