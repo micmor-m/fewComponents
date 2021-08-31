@@ -1,23 +1,25 @@
 import React from "react";
-import { ProgressPlugin } from "webpack";
 
 import Button from "./Button";
 import Card from "./Card";
 import "./ErrorModal.css";
 
-const ErrorModal = ({}) => {
+const ErrorModal = ({ title, message }) => {
 	return (
-		<Card className="users">
-			<header>
-				<h2>{ProgressPlugin.title}</h2>
-			</header>
-			<div>
-				<p></p>
-			</div>
-			<footer>
-				<Button>Okay</Button>
-			</footer>
-		</Card>
+		<>
+			<div className="backdrop"></div>
+			<Card className="modal">
+				<header className="header">
+					<h2>{title}</h2>
+				</header>
+				<div className="content">
+					<p>{message}</p>
+				</div>
+				<footer className="actions">
+					<Button>Okay</Button>
+				</footer>
+			</Card>
+		</>
 	);
 };
 
